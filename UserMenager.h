@@ -18,6 +18,7 @@ class UserMenager
     int getNewUserID();
     bool isUserNameExist(string userName);
 
+
 public:
     UserMenager(string fileWithUsersName) : fileWithUsers(fileWithUsersName)
     {
@@ -25,6 +26,7 @@ public:
     };
     int getLoggedUserID();
     void userRegistration();
+    void displayAllUsers();
 
 
 };

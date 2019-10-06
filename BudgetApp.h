@@ -21,6 +21,7 @@ public:
     bool isUserLoggedIn();
     void userRegistration();
     char selectOptionFromMainMenu();
+    void displayAllUsers();
 };
 
 

@@ -6,6 +6,8 @@ char BudgetApp::selectOptionFromMainMenu()
     char choice;
 
     system("cls");
+    displayAllUsers();
+    cout<<endl<<endl<<endl;
     cout << "    >>> MAIN MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Registration" << endl;
@@ -31,4 +33,9 @@ void BudgetApp::userRegistration()
 {
     userMenager.userRegistration();
     system("cls");
+}
+
+void BudgetApp::displayAllUsers()
+{
+    userMenager.displayAllUsers();
 }
