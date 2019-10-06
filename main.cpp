@@ -18,7 +18,7 @@ while (true)
             switch (choice)
             {
             case '1':
-                //budgetApp.rejestracjaUzytkownika();
+                budgetApp.userRegistration();
                 break;
             case '2':
                 //budgetApp.logowanieUzytkownika();
