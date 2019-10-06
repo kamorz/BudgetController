@@ -23,10 +23,12 @@ public:
     UserMenager(string fileWithUsersName) : fileWithUsers(fileWithUsersName)
     {
         loggedUserID=0;
+        users= fileWithUsers.loadAllUsersFromFile();
     };
     int getLoggedUserID();
     void userRegistration();
     void displayAllUsers();
+    User loadOneUserDatas();
 
 
 };

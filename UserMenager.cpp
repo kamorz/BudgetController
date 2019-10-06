@@ -70,9 +70,9 @@ void UserMenager::displayAllUsers()
     for (int i=0; i<users.size(); i++)
     {
         cout<<"ID: "<<users[i].getID()<<endl;
-        cout<<"Login:"<<users[i].getUserName()<<endl;
+        cout<<"Login: "<<users[i].getUserName()<<endl;
         cout<<"Password: "<<users[i].getPassword()<<endl;
-        cout<<"Name:"<<users[i].getRealName()<<endl;
-        cout<<"Surname:"<<users[i].getRealSurname()<<endl;
+        cout<<"Name: "<<users[i].getRealName()<<endl;
+        cout<<"Surname: "<<users[i].getRealSurname()<<endl;
     }
 }
