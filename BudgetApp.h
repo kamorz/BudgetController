@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "UserMenager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -17,8 +18,9 @@ public:
     ~BudgetApp()
     {
     }
-
+    bool isUserLoggedIn();
     void userRegistration();
+    char selectOptionFromMainMenu();
 };
 
 
