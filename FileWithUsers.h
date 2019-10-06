@@ -2,6 +2,8 @@
 #define FILEWITHUSERS_H
 
 #include <iostream>
+#include "windows.h"
+#include "User.h"
 
 using namespace std;
 
@@ -11,6 +13,7 @@ class FileWithUsers
 
 public:
     FileWithUsers (string fileName) : FILE_WITH_USERS_NAME(fileName) {};
+    void addUserToFile(User user);
 
 };
 

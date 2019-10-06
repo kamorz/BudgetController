@@ -26,3 +26,9 @@ bool BudgetApp::isUserLoggedIn()
     else
         return false;
 }
+
+void BudgetApp::userRegistration()
+{
+    userMenager.userRegistration();
+    system("cls");
+}

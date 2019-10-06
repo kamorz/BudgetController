@@ -14,7 +14,9 @@ class UserMenager
     FileWithUsers fileWithUsers;
     int loggedUserID;
     vector <User> users;
-
+    User insertNewUserDatas();
+    int getNewUserID();
+    bool isUserNameExist(string userName);
 
 public:
     UserMenager(string fileWithUsersName) : fileWithUsers(fileWithUsersName)
@@ -22,7 +24,7 @@ public:
         loggedUserID=0;
     };
     int getLoggedUserID();
-
+    void userRegistration();
 
 
 };
