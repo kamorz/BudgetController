@@ -5,6 +5,7 @@
 #include <vector>
 #include "windows.h"
 #include "User.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 

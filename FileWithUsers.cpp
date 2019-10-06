@@ -40,14 +40,15 @@ vector <User> FileWithUsers::loadAllUsersFromFile()
     {
     User user;
     string IdAsString=xml.GetElemContent();
-    if (users.empty()==true)
+    user.setID(AuxiliaryMethods::convertStringToInt(IdAsString));
+    /*if (users.empty()==true)
     {
         user.setID(1);
     }
     else
     {
      user.setID(users.back().getID()+1);
-    }
+    } */
 
     xml.FindElem();
     user.setUserName(xml.GetElemContent());

@@ -10,6 +10,8 @@ class AuxiliaryMethods
 {
 public:
     static char loadCharacter();
+    static string convertIntToString(int number);
+    static int convertStringToInt(string number);
 
 };
 
