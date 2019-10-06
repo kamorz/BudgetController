@@ -24,15 +24,21 @@ User UserMenager::insertNewUserDatas()
     string userName;
     do
     {
-        cout << endl << "Podaj login: ";
+        cout << endl << "Insert login: ";
         cin>>userName;
         user.setUserName(userName);
     }
     while (isUserNameExist(user.getUserName()) == true);
-    string password;
+    string password, name, surname;
     cout << "Insert Password: ";
     cin>>password;
     user.setPassword(password);
+    cout << "Insert your name: ";
+    cin>>name;
+    user.setRealName(name);
+    cout << "Insert your surname: ";
+    cin>>surname;
+    user.setRealSurname(surname);
 
     return user;
 }

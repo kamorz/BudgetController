@@ -11,6 +11,16 @@ void User::setUserName (string newUserName)
     userName=newUserName;
 }
 
+void User::setRealName (string newRealName)
+{
+    realName=newRealName;
+}
+
+void User::setRealSurname (string newRealSurname)
+{
+    realSurname=newRealSurname;
+}
+
 void User::setPassword (string newPassword)
 {
     password=newPassword;
@@ -24,6 +34,16 @@ int User::getID()
 string User::getUserName()
 {
     return userName;
+}
+
+string User::getRealName()
+{
+    return realName;
+}
+
+string User::getRealSurname()
+{
+    return realSurname;
 }
 
 string User::getPassword()
