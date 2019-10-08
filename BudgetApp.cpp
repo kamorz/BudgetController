@@ -26,6 +26,7 @@ char BudgetApp::selectOptionFromUserMenu()
     char choice;
 
     system("cls");
+    displayAllMoneyMovements();
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Add income" << endl;
@@ -74,4 +75,14 @@ int BudgetApp::userLogOut()
 void BudgetApp::displayAllUsers()
 {
     userMenager.displayAllUsers();
+}
+
+void BudgetApp::displayAllMoneyMovements()
+{
+    budgetMenager->displayAllMoneyMovements();
+}
+
+void BudgetApp::addIncome()
+{
+    budgetMenager->addIncome(userMenager.getLoggedUserID());
 }

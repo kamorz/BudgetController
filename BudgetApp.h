@@ -28,8 +28,10 @@ public:
     void userLogIn();
     char selectOptionFromMainMenu();
     void displayAllUsers();
+    void displayAllMoneyMovements();
     char selectOptionFromUserMenu();
     int userLogOut();
+    void addIncome();
 };
 
 
