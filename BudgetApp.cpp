@@ -63,6 +63,14 @@ void BudgetApp::userLogIn()
     }
 }
 
+int BudgetApp::userLogOut()
+{
+    return userMenager.userLogOut();
+    delete budgetMenager;
+    budgetMenager=NULL;
+}
+
+
 void BudgetApp::displayAllUsers()
 {
     userMenager.displayAllUsers();

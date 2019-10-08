@@ -29,6 +29,7 @@ public:
     char selectOptionFromMainMenu();
     void displayAllUsers();
     char selectOptionFromUserMenu();
+    int userLogOut();
 };
 
 

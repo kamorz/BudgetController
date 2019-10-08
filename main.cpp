@@ -43,6 +43,9 @@ while (true)
             case '2':
                 //budgetApp.wyswietlWszystkichAdresatow();
                 break;
+            case '9':
+                budgetApp.userLogOut();
+                break;
             }
         }
     }

@@ -30,6 +30,7 @@ public:
     void displayAllUsers();
     User loadOneUserDatas();
     int userLogIn();
+    int userLogOut();
     bool isUserLoggedIn();
 
 

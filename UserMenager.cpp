@@ -121,10 +121,17 @@ int UserMenager::userLogIn()
         }
         searcher++;
     }
-
     cout << "This login doesn't exist!" << endl << endl;
 
     system("pause");
     system("cls");
     return 0;
+}
+
+
+int UserMenager::userLogOut()
+{
+    loggedUserID = 0;
+    system("cls");
+    return loggedUserID;
 }
