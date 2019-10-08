@@ -36,3 +36,10 @@ int AuxiliaryMethods::convertStringToInt(string number)
 
     return numberInt;
 }
+
+string AuxiliaryMethods::loadLine()
+{
+    string enter = "";
+    getline(cin, enter);
+    return enter;
+}

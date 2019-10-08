@@ -29,6 +29,8 @@ public:
     void userRegistration();
     void displayAllUsers();
     User loadOneUserDatas();
+    int userLogIn();
+    bool isUserLoggedIn();
 
 
 };

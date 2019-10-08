@@ -21,6 +21,25 @@ char BudgetApp::selectOptionFromMainMenu()
     return choice;
 }
 
+char BudgetApp::selectOptionFromUserMenu()
+{
+    char choice;
+
+    system("cls");
+    cout << " >>> USER MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Add income" << endl;
+    cout << "2. Add expense" << endl;
+    cout << "---------------------------" << endl;
+    cout << "8. Change password" << endl;
+    cout << "9. Log out" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Your choice: ";
+    cin.sync();
+    choice = AuxiliaryMethods::loadCharacter();
+    return choice;
+}
+
 bool BudgetApp::isUserLoggedIn()
 {
     if (userMenager.getLoggedUserID()!=0)
@@ -33,6 +52,15 @@ void BudgetApp::userRegistration()
 {
     userMenager.userRegistration();
     system("cls");
+}
+
+void BudgetApp::userLogIn()
+{
+    userMenager.userLogIn();
+    if (userMenager.isUserLoggedIn())
+    {
+        budgetMenager= new BudgetMenager (userMenager.getLoggedUserID());
+    }
 }
 
 void BudgetApp::displayAllUsers()
