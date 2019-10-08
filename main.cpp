@@ -21,7 +21,7 @@ while (true)
                 budgetApp.userRegistration();
                 break;
             case '2':
-                //budgetApp.logowanieUzytkownika();
+                budgetApp.userLogIn();
                 break;
             case '9':
                 exit(0);
@@ -32,8 +32,23 @@ while (true)
                 //system("cls");  break;
             }
         }
+        else
+        {
+            choice=budgetApp.selectOptionFromUserMenu();
+            switch (choice)
+            {
+            case '1':
+                //budgetApp.dodajAdresata();
+                break;
+            case '2':
+                //budgetApp.wyswietlWszystkichAdresatow();
+                break;
+            case '9':
+                budgetApp.userLogOut();
+                break;
+            }
+        }
     }
 
-
-
 }
+
