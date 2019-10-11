@@ -38,10 +38,10 @@ while (true)
             switch (choice)
             {
             case '1':
-                //budgetApp.dodajAdresata();
+                budgetApp.addIncome();
                 break;
             case '2':
-                //budgetApp.wyswietlWszystkichAdresatow();
+                budgetApp.addExpense();
                 break;
             case '9':
                 budgetApp.userLogOut();
