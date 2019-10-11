@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include  <cstdlib>
+#include <stdio.h>
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
 
