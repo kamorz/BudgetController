@@ -5,7 +5,18 @@
 
 using namespace std;
 
+class FileWithExpenses : public FileWithMovements
+{
+    string fileName;
 
+public:
+    FileWithExpenses //(string nazwaPliku) : PlikTekstowy(nazwaPliku)
+    {
+        fileName="expenses.xml";
+    };
+
+
+};
 
 
 
