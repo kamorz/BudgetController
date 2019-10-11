@@ -32,6 +32,7 @@ public:
     char selectOptionFromUserMenu();
     int userLogOut();
     void addIncome();
+    void addExpense();
 };
 
 

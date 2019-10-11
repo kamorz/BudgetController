@@ -86,3 +86,8 @@ void BudgetApp::addIncome()
 {
     budgetMenager->addIncome(userMenager.getLoggedUserID());
 }
+
+void BudgetApp::addExpense()
+{
+    budgetMenager->addExpense(userMenager.getLoggedUserID());
+}

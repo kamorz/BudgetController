@@ -22,6 +22,7 @@ public:
     };
     void displayAllMoneyMovements();
     int addIncome(int loggedUserID);
+    int addExpense(int loggedUserID);
     Movement addNewMovementDatas(int loggedUserID, int typeOfMovement /*, int idOstatniegoAdresata */ );
 };
 

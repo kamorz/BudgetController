@@ -41,7 +41,7 @@ while (true)
                 budgetApp.addIncome();
                 break;
             case '2':
-                //budgetApp.wyswietlWszystkichAdresatow();
+                budgetApp.addExpense();
                 break;
             case '9':
                 budgetApp.userLogOut();
