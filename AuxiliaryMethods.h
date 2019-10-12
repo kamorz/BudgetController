@@ -27,6 +27,8 @@ public:
     static bool isTheYearLeap(int year);
     static string convertDoubleToString(double numberAsDouble);
     static double convertStringToDouble (string numberAsString);
+    static string getInfoAboutCurrentMonth();
+    static string getInfoAboutPreviousMonth();
 
 };
 

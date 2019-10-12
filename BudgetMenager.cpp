@@ -19,6 +19,51 @@ void BudgetMenager::displayAllMoneyMovements()
     system("pause");
 }
 
+
+void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
+{
+    cout<<AuxiliaryMethods::getInfoAboutCurrentMonth()<<endl;
+    system("pause");
+    /*system("cls");
+    for (int searcher = 0 ; searcher< movements.size(); searcher++)
+    {
+        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+        cout<<"Date: "<<movements[searcher].getDate()<<endl;
+        cout<< "Amount: ";
+        if (movements[searcher].getItem()==0)
+        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        else if (movements[searcher].getItem()==1)
+        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+
+        cout<<endl<<endl;
+    }
+    cout<<endl;
+    system("pause"); */
+}
+
+
+void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
+{
+    cout<<AuxiliaryMethods::getInfoAboutPreviousMonth()<<endl;
+    system("pause");
+    /*system("cls");
+    for (int searcher = 0 ; searcher< movements.size(); searcher++)
+    {
+        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+        cout<<"Date: "<<movements[searcher].getDate()<<endl;
+        cout<< "Amount: ";
+        if (movements[searcher].getItem()==0)
+        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        else if (movements[searcher].getItem()==1)
+        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+
+        cout<<endl<<endl;
+    }
+    cout<<endl;
+    system("pause"); */
+}
+
+
 int BudgetMenager::addIncome(int loggedUserID)
 {
     int typeOfMovement=1;

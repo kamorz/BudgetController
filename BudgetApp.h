@@ -32,6 +32,8 @@ public:
     char selectOptionFromMainMenu();
     void displayAllUsers();
     void displayAllMoneyMovements();
+    void displayMoneyMovementsFromCurrentMonth();
+    void displayMoneyMovementsFromPreviousMonth();
     char selectOptionFromUserMenu();
     int userLogOut();
     void addIncome();

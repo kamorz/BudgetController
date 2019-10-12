@@ -137,30 +137,30 @@ bool AuxiliaryMethods::isTheDayCorrect(int year, int month, int day)
 
 string AuxiliaryMethods::loadSystemDate()
 {
-    string dateAsString="";
+    string DateAsString="";
 
     SYSTEMTIME st;
     GetSystemTime(&st);
-    dateAsString+=convertIntToString(st.wYear);
-    dateAsString+="-";
+    DateAsString+=convertIntToString(st.wYear);
+    DateAsString+="-";
 
     if (st.wMonth>=10)
-        dateAsString+=convertIntToString(st.wMonth);
+        DateAsString+=convertIntToString(st.wMonth);
     else
     {
-        dateAsString+="0";
-        dateAsString+=convertIntToString(st.wMonth);
+        DateAsString+="0";
+        DateAsString+=convertIntToString(st.wMonth);
     }
-    dateAsString+="-";
+    DateAsString+="-";
 
     if (st.wDay>=10)
-        dateAsString+=convertIntToString(st.wDay);
+        DateAsString+=convertIntToString(st.wDay);
     else
     {
-        dateAsString+="0";
-        dateAsString+=convertIntToString(st.wDay);
+        DateAsString+="0";
+        DateAsString+=convertIntToString(st.wDay);
     }
-    return dateAsString;
+    return DateAsString;
 }
 
 string AuxiliaryMethods::convertDoubleToString(double numberAsDouble)
@@ -175,4 +175,44 @@ double AuxiliaryMethods::convertStringToDouble (string numberAsString)
 {
     double number = atof(numberAsString.c_str());
     return number;
+}
+
+string AuxiliaryMethods::getInfoAboutCurrentMonth()
+{
+    string monthInfo="";
+
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    monthInfo+=convertIntToString(st.wYear);
+    monthInfo+="-";
+
+    if (st.wMonth>=10)
+        monthInfo+=convertIntToString(st.wMonth);
+    else
+    {
+        monthInfo+="0";
+        monthInfo+=convertIntToString(st.wMonth);
+    }
+
+    return monthInfo;
+}
+
+string AuxiliaryMethods::getInfoAboutPreviousMonth()
+{
+    string monthInfo="";
+
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    monthInfo+=convertIntToString(st.wYear);
+    monthInfo+="-";
+    int previousMonth = st.wMonth-1;
+    if (previousMonth>=10)
+        monthInfo+=convertIntToString(previousMonth);
+    else
+    {
+        monthInfo+="0";
+        monthInfo+=convertIntToString(previousMonth);
+    }
+
+    return monthInfo;
 }
