@@ -56,7 +56,7 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
 {
     Movement movement;
 
-    movement.setID(movements.size()+1);
+    movement.setID(fileWithMovements.getLastMovementID()+1);
     movement.setUserID(loggedUserID);
 
     cin.sync();
@@ -71,7 +71,7 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     while (! (cin>>newAmount))
     {
     cout<<"Uncorrect value! Try again!"<<endl;
-    cin.clear(); //kasowanie flagi b³êdu strumienia
+    cin.clear();
     cin.sync();
     }
     movement.setAmount(newAmount);

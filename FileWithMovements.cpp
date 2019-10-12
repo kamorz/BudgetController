@@ -1,7 +1,10 @@
 #include "FileWithMovements.h"
 #include "Markup.h"
 
-
+int FileWithMovements::getLastMovementID()
+{
+    return biggestMovementID;
+}
 
 void FileWithMovements::addMovementToFile(Movement movement)
 {
@@ -73,7 +76,7 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
             if (fileNumber==1)
                 movement.setItem(1);
             else if (fileNumber==2)
-                //movement.setItem(0);
+                movement.setItem(0);
 
             if (loggedUserID==movement.getUserID())
             movements.push_back(movement);

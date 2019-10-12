@@ -22,6 +22,7 @@ public:
     void addMovementToFile(Movement movement);
     string getFileName();
     vector <Movement> loadLoggedUserMovements(int loggedUserID);
+    int getLastMovementID();
 };
 
 
