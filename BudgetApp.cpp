@@ -60,7 +60,7 @@ void BudgetApp::userLogIn()
     userMenager.userLogIn();
     if (userMenager.isUserLoggedIn())
     {
-        budgetMenager= new BudgetMenager (userMenager.getLoggedUserID());
+        budgetMenager= new BudgetMenager (FILE_WITH_INCOMES_NAME, FILE_WITH_EXPENSES_NAME, userMenager.getLoggedUserID());
     }
 }
 

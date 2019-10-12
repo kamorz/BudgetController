@@ -145,3 +145,17 @@ string AuxiliaryMethods::loadSystemDate()
     }
     return dateAsString;
 }
+
+string AuxiliaryMethods::convertDoubleToString(double numberAsDouble)
+{
+ostringstream strs;
+strs << numberAsDouble;
+string str = strs.str();
+return str;
+}
+
+double AuxiliaryMethods::convertStringToDouble (string numberAsString)
+{
+    double number = atof(numberAsString.c_str());
+    return number;
+}

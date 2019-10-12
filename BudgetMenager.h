@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
+#include "FileWithMovements.h"
 
 using namespace std;
 
@@ -13,10 +14,11 @@ class BudgetMenager
 {
     const int LOGGED_USER_ID;
     vector <Movement> movements;
-
+    FileWithMovements fileWithMovements;
 
 public:
-    BudgetMenager(int loggedUserID) : LOGGED_USER_ID(loggedUserID)
+    BudgetMenager(string fileWithIncomesName, string fileWithExpensesName, int loggedUserID)
+    : fileWithMovements(fileWithIncomesName, fileWithExpensesName), LOGGED_USER_ID(loggedUserID)
     {
         //movements= plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     };

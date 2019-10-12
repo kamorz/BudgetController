@@ -19,14 +19,13 @@ int BudgetMenager::addIncome(int loggedUserID)
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement /*, idOstatniegoAdresata */);
-
+    fileWithMovements.addMovementToFile(movement);
     movements.push_back(movement);
+
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
-    //dopiszAdresataDoPliku(adresat);
 
-    return ++lastMovementID;
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
@@ -37,14 +36,12 @@ int BudgetMenager::addExpense(int loggedUserID)
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement);
-
+    fileWithMovements.addMovementToFile(movement);
     movements.push_back(movement);
     system("cls");
     cout<<"Added expense!";
     Sleep(1200);
-    //dopiszAdresataDoPliku(adresat);
 
-    return ++lastMovementID;
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)
