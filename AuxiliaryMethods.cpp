@@ -46,7 +46,7 @@ string AuxiliaryMethods::loadLine()
 
 string AuxiliaryMethods::introducingDate()
 {
-    string dayAsString="", monthAsString="", yearAsString="",  wholeDate="";
+    string dayAsString="", monthAsString="", yearAsString="",  wholeDate;
     cout<<"Insert the data according to: YYYY-MM-DD"<<endl<<endl;
 
     while(isTheYearCorrect(atoi( yearAsString.c_str()))==false)
@@ -80,7 +80,24 @@ string AuxiliaryMethods::introducingDate()
     } while(isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()) )==false);
     cout<<"Introduced date!"<<endl;
     Sleep(500);
-    wholeDate+=yearAsString+"-"+monthAsString+"-"+dayAsString;
+    wholeDate=organizeWholeDate(yearAsString, dayAsString, monthAsString);
+    return wholeDate;
+}
+
+string AuxiliaryMethods::organizeWholeDate(string yearAsString, string dayAsString, string monthAsString)
+{
+    string wholeDate="";
+    wholeDate+=yearAsString+"-";
+
+    if (AuxiliaryMethods::convertStringToInt(monthAsString)>=10)
+    wholeDate+= monthAsString+"-";
+    else if (AuxiliaryMethods::convertStringToInt(monthAsString)<10)
+    wholeDate+="0" + monthAsString+"-";
+
+    if (AuxiliaryMethods::convertStringToInt(dayAsString)>=10)
+    wholeDate+= dayAsString;
+    else if (AuxiliaryMethods::convertStringToInt(dayAsString)<10)
+    wholeDate+="0" + dayAsString;
     return wholeDate;
 }
 
@@ -137,30 +154,30 @@ bool AuxiliaryMethods::isTheDayCorrect(int year, int month, int day)
 
 string AuxiliaryMethods::loadSystemDate()
 {
-    string dateAsString="";
+    string DateAsString="";
 
     SYSTEMTIME st;
     GetSystemTime(&st);
-    dateAsString+=convertIntToString(st.wYear);
-    dateAsString+="-";
+    DateAsString+=convertIntToString(st.wYear);
+    DateAsString+="-";
 
     if (st.wMonth>=10)
-        dateAsString+=convertIntToString(st.wMonth);
+        DateAsString+=convertIntToString(st.wMonth);
     else
     {
-        dateAsString+="0";
-        dateAsString+=convertIntToString(st.wMonth);
+        DateAsString+="0";
+        DateAsString+=convertIntToString(st.wMonth);
     }
-    dateAsString+="-";
+    DateAsString+="-";
 
     if (st.wDay>=10)
-        dateAsString+=convertIntToString(st.wDay);
+        DateAsString+=convertIntToString(st.wDay);
     else
     {
-        dateAsString+="0";
-        dateAsString+=convertIntToString(st.wDay);
+        DateAsString+="0";
+        DateAsString+=convertIntToString(st.wDay);
     }
-    return dateAsString;
+    return DateAsString;
 }
 
 string AuxiliaryMethods::convertDoubleToString(double numberAsDouble)
@@ -175,4 +192,44 @@ double AuxiliaryMethods::convertStringToDouble (string numberAsString)
 {
     double number = atof(numberAsString.c_str());
     return number;
+}
+
+string AuxiliaryMethods::getInfoAboutCurrentMonth()
+{
+    string monthInfo="";
+
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    monthInfo+=convertIntToString(st.wYear);
+    monthInfo+="-";
+
+    if (st.wMonth>=10)
+        monthInfo+=convertIntToString(st.wMonth);
+    else
+    {
+        monthInfo+="0";
+        monthInfo+=convertIntToString(st.wMonth);
+    }
+
+    return monthInfo;
+}
+
+string AuxiliaryMethods::getInfoAboutPreviousMonth()
+{
+    string monthInfo="";
+
+    SYSTEMTIME st;
+    GetSystemTime(&st);
+    monthInfo+=convertIntToString(st.wYear);
+    monthInfo+="-";
+    int previousMonth = st.wMonth-1;
+    if (previousMonth>=10)
+        monthInfo+=convertIntToString(previousMonth);
+    else
+    {
+        monthInfo+="0";
+        monthInfo+=convertIntToString(previousMonth);
+    }
+
+    return monthInfo;
 }

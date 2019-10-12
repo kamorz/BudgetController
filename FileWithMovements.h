@@ -23,6 +23,7 @@ public:
     string getFileName();
     vector <Movement> loadLoggedUserMovements(int loggedUserID);
     int getLastMovementID();
+    void setBiggestMovementID(int newBiggestMovementID);
 };
 
 

@@ -5,6 +5,8 @@
 #include  <cstdlib>
 #include <stdio.h>
 #include <iomanip>
+#include <windows.h>
+
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
 #include "FileWithMovements.h"
@@ -27,6 +29,8 @@ public:
     int addIncome(int loggedUserID);
     int addExpense(int loggedUserID);
     Movement addNewMovementDatas(int loggedUserID, int typeOfMovement /*, int idOstatniegoAdresata */ );
+    void displayMoneyMovementsFromCurrentMonth();
+    void displayMoneyMovementsFromPreviousMonth();
 };
 
 

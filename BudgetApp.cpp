@@ -24,13 +24,14 @@ char BudgetApp::selectOptionFromMainMenu()
 char BudgetApp::selectOptionFromUserMenu()
 {
     char choice;
-
     system("cls");
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
     cout << "3. Display all your incomes and expenses" << endl;
+    cout << "4. Display your incomes and expenses from current month" << endl;
+    cout << "5. Display your incomes and expenses from previous month" << endl;
     cout << "---------------------------" << endl;
     cout << "8. Change password" << endl;
     cout << "9. Log out" << endl;
@@ -80,6 +81,16 @@ void BudgetApp::displayAllUsers()
 void BudgetApp::displayAllMoneyMovements()
 {
     budgetMenager->displayAllMoneyMovements();
+}
+
+void BudgetApp::displayMoneyMovementsFromCurrentMonth()
+{
+    budgetMenager->displayMoneyMovementsFromCurrentMonth();
+}
+
+void BudgetApp::displayMoneyMovementsFromPreviousMonth()
+{
+    budgetMenager->displayMoneyMovementsFromPreviousMonth();
 }
 
 void BudgetApp::addIncome()

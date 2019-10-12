@@ -7,10 +7,10 @@ using namespace std;
 
 int main()
 {
-BudgetApp budgetApp ("Users.xml", "Incomes.xml", "Expenses.xml");
-char choice;
+    BudgetApp budgetApp ("Users.xml", "Incomes.xml", "Expenses.xml");
+    char choice;
 
-while (true)
+    while (true)
     {
         if (budgetApp.isUserLoggedIn()!=true)
         {
@@ -45,6 +45,12 @@ while (true)
                 break;
             case '3':
                 budgetApp.displayAllMoneyMovements();
+                break;
+            case '4':
+                budgetApp.displayMoneyMovementsFromCurrentMonth();
+                break;
+            case '5':
+                budgetApp.displayMoneyMovementsFromPreviousMonth();
                 break;
             case '9':
                 budgetApp.userLogOut();
