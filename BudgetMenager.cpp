@@ -58,9 +58,14 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     cout << "Insert name of income: ";
     movement.setName(AuxiliaryMethods::loadLine());
 
-    double newAmount;
-    cout << "Insert amount: ";
-    cin>>newAmount;
+    double newAmount=0;
+    cout << "Insert amount using separatot '.' :  ";
+    while (! (cin>>newAmount))
+    {
+    cout<<"Uncorrect value! Try again!"<<endl;
+    cin.clear(); //kasowanie flagi b³êdu strumienia
+    cin.sync();
+    }
     movement.setAmount(newAmount);
 
     char choice='0';

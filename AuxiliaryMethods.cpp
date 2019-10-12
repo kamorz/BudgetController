@@ -55,7 +55,7 @@ string AuxiliaryMethods::introducingDate()
      if (isTheYearCorrect(atoi( yearAsString.c_str()))==false)
      {
          cout<<"Uncorrect year! Try again!";
-         Sleep (1500); system("cls");
+         Sleep (900); system("cls");
      }
     }
     while(isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
@@ -64,7 +64,7 @@ string AuxiliaryMethods::introducingDate()
      if (isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
      {
         cout<<"Uncorrect month! Try again!";
-        Sleep (1500); system("cls");
+        Sleep (900); system("cls");
         cout<<"Year: "<<yearAsString<<endl;
      }
     }
@@ -74,7 +74,7 @@ string AuxiliaryMethods::introducingDate()
      if (isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()))==false)
      {
          cout<<"Uncorrect day! Try again!"<<endl;
-         Sleep(1000); system("cls");
+         Sleep(900); system("cls");
          cout<<"Year: "<<yearAsString<<"  Month: "<<monthAsString<<endl;
      }
     } while(isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()) )==false);
