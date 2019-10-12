@@ -46,7 +46,7 @@ string AuxiliaryMethods::loadLine()
 
 string AuxiliaryMethods::introducingDate()
 {
-    string dayAsString="", monthAsString="", yearAsString="",  wholeDate="";
+    string dayAsString="", monthAsString="", yearAsString="",  wholeDate;
     cout<<"Insert the data according to: YYYY-MM-DD"<<endl<<endl;
 
     while(isTheYearCorrect(atoi( yearAsString.c_str()))==false)
@@ -80,7 +80,24 @@ string AuxiliaryMethods::introducingDate()
     } while(isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()) )==false);
     cout<<"Introduced date!"<<endl;
     Sleep(500);
-    wholeDate+=yearAsString+"-"+monthAsString+"-"+dayAsString;
+    wholeDate=organizeWholeDate(yearAsString, dayAsString, monthAsString);
+    return wholeDate;
+}
+
+string AuxiliaryMethods::organizeWholeDate(string yearAsString, string dayAsString, string monthAsString)
+{
+    string wholeDate="";
+    wholeDate+=yearAsString+"-";
+
+    if (AuxiliaryMethods::convertStringToInt(monthAsString)>=10)
+    wholeDate+= monthAsString+"-";
+    else if (AuxiliaryMethods::convertStringToInt(monthAsString)<10)
+    wholeDate+="0" + monthAsString+"-";
+
+    if (AuxiliaryMethods::convertStringToInt(dayAsString)>=10)
+    wholeDate+= dayAsString+"-";
+    else if (AuxiliaryMethods::convertStringToInt(dayAsString)<10)
+    wholeDate+="0" + dayAsString;
     return wholeDate;
 }
 

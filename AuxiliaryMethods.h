@@ -29,6 +29,7 @@ public:
     static double convertStringToDouble (string numberAsString);
     static string getInfoAboutCurrentMonth();
     static string getInfoAboutPreviousMonth();
+    static string organizeWholeDate(string yearAsString, string dayAsString, string MonthAsString);
 
 };
 

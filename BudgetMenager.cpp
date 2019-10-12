@@ -9,9 +9,9 @@ void BudgetMenager::displayAllMoneyMovements()
         cout<<"Date: "<<movements[searcher].getDate()<<endl;
         cout<< "Amount: ";
         if (movements[searcher].getItem()==0)
-        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+            cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
         else if (movements[searcher].getItem()==1)
-        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+            cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
 
         cout<<endl<<endl;
     }
@@ -22,45 +22,59 @@ void BudgetMenager::displayAllMoneyMovements()
 
 void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 {
-    cout<<AuxiliaryMethods::getInfoAboutCurrentMonth()<<endl;
-    system("pause");
-    /*system("cls");
+    system("cls");
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
-        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
-        cout<<"Date: "<<movements[searcher].getDate()<<endl;
-        cout<< "Amount: ";
-        if (movements[searcher].getItem()==0)
-        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
-        else if (movements[searcher].getItem()==1)
-        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        string dateForComparison=movements[searcher].getDate();
+        string dateFormatForComparison="";
+        for (int datePosition=0; datePosition<=6; datePosition++)
+        {
+            dateFormatForComparison+=dateForComparison[datePosition];
+        }
+        if (AuxiliaryMethods::getInfoAboutCurrentMonth()==dateFormatForComparison)
+        {
+            cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+            cout<<"Date: "<<movements[searcher].getDate()<<endl;
+            cout<< "Amount: ";
+            if (movements[searcher].getItem()==0)
+                cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+            else if (movements[searcher].getItem()==1)
+                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
 
-        cout<<endl<<endl;
+            cout<<endl<<endl;
+        }
     }
     cout<<endl;
-    system("pause"); */
+    system("pause");
 }
 
 
 void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 {
-    cout<<AuxiliaryMethods::getInfoAboutPreviousMonth()<<endl;
-    system("pause");
-    /*system("cls");
+    system("cls");
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
-        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
-        cout<<"Date: "<<movements[searcher].getDate()<<endl;
-        cout<< "Amount: ";
-        if (movements[searcher].getItem()==0)
-        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
-        else if (movements[searcher].getItem()==1)
-        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        string dateForComparison=movements[searcher].getDate();
+        string dateFormatForComparison="";
+        for (int datePosition=0; datePosition<=6; datePosition++)
+        {
+            dateFormatForComparison+=dateForComparison[datePosition];
+        }
+        if (AuxiliaryMethods::getInfoAboutPreviousMonth()==dateFormatForComparison)
+        {
+            cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+            cout<<"Date: "<<movements[searcher].getDate()<<endl;
+            cout<< "Amount: ";
+            if (movements[searcher].getItem()==0)
+                cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+            else if (movements[searcher].getItem()==1)
+                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
 
-        cout<<endl<<endl;
+            cout<<endl<<endl;
+        }
     }
     cout<<endl;
-    system("pause"); */
+    system("pause");
 }
 
 
@@ -78,7 +92,7 @@ int BudgetMenager::addIncome(int loggedUserID)
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
-
+    lastMovementID+=1;
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
@@ -94,7 +108,7 @@ int BudgetMenager::addExpense(int loggedUserID)
     system("cls");
     cout<<"Added expense!";
     Sleep(1200);
-
+    lastMovementID+=1;
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)
@@ -115,9 +129,9 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     cout << "Insert amount using separator '.' :  ";
     while (! (cin>>newAmount))
     {
-    cout<<"Uncorrect value! Try again!"<<endl;
-    cin.clear();
-    cin.sync();
+        cout<<"Uncorrect value! Try again!"<<endl;
+        cin.clear();
+        cin.sync();
     }
     movement.setAmount(newAmount);
 
@@ -125,16 +139,16 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     cout<<"Do you want to load current date (enter 'C')or insert your own(enter 'O')?";
     while (choice!='o' && choice!='O' && choice!='C' && choice!='c')
     {
-    cin>>choice;
-    if (choice == 'C' || choice=='c')
-    {
-    string newDate= AuxiliaryMethods::loadSystemDate();
-    movement.setDate(newDate);
-    }
-    else if (choice == 'O' || choice=='o')
-    {
-    movement.setDate(AuxiliaryMethods::introducingDate());
-    }
+        cin>>choice;
+        if (choice == 'C' || choice=='c')
+        {
+            string newDate= AuxiliaryMethods::loadSystemDate();
+            movement.setDate(newDate);
+        }
+        else if (choice == 'O' || choice=='o')
+        {
+            movement.setDate(AuxiliaryMethods::introducingDate());
+        }
     }
     return movement;
 }
