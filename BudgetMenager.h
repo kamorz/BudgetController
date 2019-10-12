@@ -5,6 +5,8 @@
 #include  <cstdlib>
 #include <stdio.h>
 #include <iomanip>
+#include <windows.h>
+
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
 #include "FileWithMovements.h"

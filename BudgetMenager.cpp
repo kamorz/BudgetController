@@ -3,8 +3,14 @@
 void BudgetMenager::displayAllMoneyMovements()
 {
     system("cls");
+    HANDLE hOut;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
+        hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+        if (movements[searcher].getItem()==0)
+            SetConsoleTextAttribute( hOut, FOREGROUND_RED );
+        else if (movements[searcher].getItem()==1)
+            SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
         cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
         cout<<"Date: "<<movements[searcher].getDate()<<endl;
         cout<< "Amount: ";
@@ -14,7 +20,9 @@ void BudgetMenager::displayAllMoneyMovements()
             cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
 
         cout<<endl<<endl;
+
     }
+    SetConsoleTextAttribute( hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED );
     cout<<endl;
     system("pause");
 }
@@ -23,6 +31,7 @@ void BudgetMenager::displayAllMoneyMovements()
 void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 {
     system("cls");
+    HANDLE hOut;
     double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
@@ -34,6 +43,12 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
         }
         if (AuxiliaryMethods::getInfoAboutCurrentMonth()==dateFormatForComparison)
         {
+            HANDLE hOut;
+            hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+            if (movements[searcher].getItem()==0)
+                SetConsoleTextAttribute( hOut, FOREGROUND_RED );
+            else if (movements[searcher].getItem()==1)
+                SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
             cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
@@ -49,10 +64,9 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
                 balance+=movements[searcher].getAmount();
             }
             cout<<endl<<endl;
-
         }
-
     }
+    SetConsoleTextAttribute( hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED );
     cout<<"BALANCE : "<<fixed<<setprecision(2)<<balance<<endl;
     cout<<endl;
     system("pause");
@@ -62,6 +76,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 {
     system("cls");
+    HANDLE hOut;
     double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
@@ -73,6 +88,12 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
         }
         if (AuxiliaryMethods::getInfoAboutPreviousMonth()==dateFormatForComparison)
         {
+            HANDLE hOut;
+            hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+            if (movements[searcher].getItem()==0)
+                SetConsoleTextAttribute( hOut, FOREGROUND_RED );
+            else if (movements[searcher].getItem()==1)
+                SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
             cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
@@ -88,10 +109,9 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
                 balance+=movements[searcher].getAmount();
             }
             cout<<endl<<endl;
-
         }
-
     }
+    SetConsoleTextAttribute( hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED );
     cout<<"BALANCE : "<<fixed<<setprecision(2)<<balance<<endl;
     cout<<endl;
     system("pause");
@@ -107,7 +127,6 @@ int BudgetMenager::addIncome(int loggedUserID)
     movement = addNewMovementDatas(loggedUserID, typeOfMovement /*, idOstatniegoAdresata */);
     fileWithMovements.addMovementToFile(movement);
     movements.push_back(movement);
-
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
@@ -140,7 +159,7 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     movement.setItem(typeOfMovement);
 
     cin.sync();
-    cout << "Insert name of income: ";
+    cout << "Insert name: ";
     movement.setName(AuxiliaryMethods::loadLine());
 
     double newAmount=0;

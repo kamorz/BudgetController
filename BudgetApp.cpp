@@ -24,7 +24,6 @@ char BudgetApp::selectOptionFromMainMenu()
 char BudgetApp::selectOptionFromUserMenu()
 {
     char choice;
-
     system("cls");
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
