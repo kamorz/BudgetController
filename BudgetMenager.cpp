@@ -2,13 +2,21 @@
 
 void BudgetMenager::displayAllMoneyMovements()
 {
+    system("cls");
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
-        cout << endl << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<
-        "  Item:  " << movements[searcher].getItem()<< " amount: "<<movements[searcher].getAmount()<<" date: "
-        <<movements[searcher].getDate()<<endl;
+        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+        cout<<"Date: "<<movements[searcher].getDate()<<endl;
+        cout<< "Amount: ";
+        if (movements[searcher].getItem()==0)
+        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        else if (movements[searcher].getItem()==1)
+        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+
+        cout<<endl<<endl;
     }
-    cout<<endl<<endl;
+    cout<<endl;
+    system("pause");
 }
 
 int BudgetMenager::addIncome(int loggedUserID)
@@ -19,14 +27,13 @@ int BudgetMenager::addIncome(int loggedUserID)
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement /*, idOstatniegoAdresata */);
-
+    fileWithMovements.addMovementToFile(movement);
     movements.push_back(movement);
+
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
-    //dopiszAdresataDoPliku(adresat);
 
-    return ++lastMovementID;
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
@@ -37,21 +44,19 @@ int BudgetMenager::addExpense(int loggedUserID)
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement);
-
+    fileWithMovements.addMovementToFile(movement);
     movements.push_back(movement);
     system("cls");
     cout<<"Added expense!";
     Sleep(1200);
-    //dopiszAdresataDoPliku(adresat);
 
-    return ++lastMovementID;
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)
 {
     Movement movement;
 
-    movement.setID(movements.size()+1);
+    movement.setID(fileWithMovements.getLastMovementID()+1);
     movement.setUserID(loggedUserID);
 
     cin.sync();
@@ -61,9 +66,14 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     cout << "Insert name of income: ";
     movement.setName(AuxiliaryMethods::loadLine());
 
-    double newAmount;
-    cout << "Insert amount: ";
-    cin>>newAmount;
+    double newAmount=0;
+    cout << "Insert amount using separator '.' :  ";
+    while (! (cin>>newAmount))
+    {
+    cout<<"Uncorrect value! Try again!"<<endl;
+    cin.clear();
+    cin.sync();
+    }
     movement.setAmount(newAmount);
 
     char choice='0';

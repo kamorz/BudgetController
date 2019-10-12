@@ -5,7 +5,7 @@
 void FileWithUsers::addUserToFile(User user)
 {
     CMarkup xml;
-    bool fileExist = xml.Load( "users.xml" );
+    bool fileExist = xml.Load( FILE_WITH_USERS_NAME );
 
     if (!fileExist)
     {
@@ -21,7 +21,7 @@ void FileWithUsers::addUserToFile(User user)
         xml.AddElem( "Surname", user.getRealSurname());
         xml.OutOfElem();
 
-    xml.Save("users.xml");
+    xml.Save(FILE_WITH_USERS_NAME);
 }
 
 
@@ -30,7 +30,7 @@ vector <User> FileWithUsers::loadAllUsersFromFile()
     vector <User> users;
 
     CMarkup xml;
-    bool fileExist = xml.Load( "users.xml" );
+    bool fileExist = xml.Load( FILE_WITH_USERS_NAME );
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();
@@ -41,14 +41,7 @@ vector <User> FileWithUsers::loadAllUsersFromFile()
     User user;
     string IdAsString=xml.GetElemContent();
     user.setID(AuxiliaryMethods::convertStringToInt(IdAsString));
-    /*if (users.empty()==true)
-    {
-        user.setID(1);
-    }
-    else
-    {
-     user.setID(users.back().getID()+1);
-    } */
+
 
     xml.FindElem();
     user.setUserName(xml.GetElemContent());

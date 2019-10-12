@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <winbase.h>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 
@@ -24,6 +25,8 @@ public:
     static bool isTheMonthCorrect(int month);
     static bool isTheDayCorrect(int year, int month, int day);
     static bool isTheYearLeap(int year);
+    static string convertDoubleToString(double numberAsDouble);
+    static double convertStringToDouble (string numberAsString);
 
 };
 

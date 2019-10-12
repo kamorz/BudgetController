@@ -26,11 +26,11 @@ char BudgetApp::selectOptionFromUserMenu()
     char choice;
 
     system("cls");
-    displayAllMoneyMovements();
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
+    cout << "3. Display all your incomes and expenses" << endl;
     cout << "---------------------------" << endl;
     cout << "8. Change password" << endl;
     cout << "9. Log out" << endl;
@@ -60,7 +60,7 @@ void BudgetApp::userLogIn()
     userMenager.userLogIn();
     if (userMenager.isUserLoggedIn())
     {
-        budgetMenager= new BudgetMenager (userMenager.getLoggedUserID());
+        budgetMenager= new BudgetMenager (FILE_WITH_INCOMES_NAME, FILE_WITH_EXPENSES_NAME, userMenager.getLoggedUserID());
     }
 }
 
