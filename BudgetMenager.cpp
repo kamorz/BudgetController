@@ -23,6 +23,7 @@ void BudgetMenager::displayAllMoneyMovements()
 void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 {
     system("cls");
+    double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
         string dateForComparison=movements[searcher].getDate();
@@ -37,13 +38,22 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
             if (movements[searcher].getItem()==0)
+            {
                 cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
-            else if (movements[searcher].getItem()==1)
-                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance-=movements[searcher].getAmount();
+            }
 
+            else if (movements[searcher].getItem()==1)
+            {
+                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance+=movements[searcher].getAmount();
+            }
             cout<<endl<<endl;
+
         }
+
     }
+    cout<<"BALANCE : "<<fixed<<setprecision(2)<<balance<<endl;
     cout<<endl;
     system("pause");
 }
@@ -52,6 +62,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 {
     system("cls");
+    double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
         string dateForComparison=movements[searcher].getDate();
@@ -66,13 +77,22 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
             if (movements[searcher].getItem()==0)
+            {
                 cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
-            else if (movements[searcher].getItem()==1)
-                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance-=movements[searcher].getAmount();
+            }
 
+            else if (movements[searcher].getItem()==1)
+            {
+                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance+=movements[searcher].getAmount();
+            }
             cout<<endl<<endl;
+
         }
+
     }
+    cout<<"BALANCE : "<<fixed<<setprecision(2)<<balance<<endl;
     cout<<endl;
     system("pause");
 }
@@ -82,7 +102,6 @@ int BudgetMenager::addIncome(int loggedUserID)
 {
     int typeOfMovement=1;
     Movement movement;
-    int lastMovementID;
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement /*, idOstatniegoAdresata */);
@@ -92,14 +111,13 @@ int BudgetMenager::addIncome(int loggedUserID)
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
-    lastMovementID+=1;
+    fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
 {
     int typeOfMovement=0;
     Movement movement;
-    int lastMovementID;
     system("cls");
     cout << " >>> ADDING NEW MONEY MOVEMENT <<<" << endl << endl;
     movement = addNewMovementDatas(loggedUserID, typeOfMovement);
@@ -108,7 +126,7 @@ int BudgetMenager::addExpense(int loggedUserID)
     system("cls");
     cout<<"Added expense!";
     Sleep(1200);
-    lastMovementID+=1;
+    fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)

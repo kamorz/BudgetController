@@ -6,6 +6,11 @@ int FileWithMovements::getLastMovementID()
     return biggestMovementID;
 }
 
+void FileWithMovements::setBiggestMovementID(int newBiggestMovementID)
+{
+    biggestMovementID=newBiggestMovementID;
+}
+
 void FileWithMovements::addMovementToFile(Movement movement)
 {
     CMarkup xml;

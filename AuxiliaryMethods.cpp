@@ -95,7 +95,7 @@ string AuxiliaryMethods::organizeWholeDate(string yearAsString, string dayAsStri
     wholeDate+="0" + monthAsString+"-";
 
     if (AuxiliaryMethods::convertStringToInt(dayAsString)>=10)
-    wholeDate+= dayAsString+"-";
+    wholeDate+= dayAsString;
     else if (AuxiliaryMethods::convertStringToInt(dayAsString)<10)
     wholeDate+="0" + dayAsString;
     return wholeDate;
