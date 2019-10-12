@@ -52,17 +52,34 @@ string AuxiliaryMethods::introducingDate()
     while(isTheYearCorrect(atoi( yearAsString.c_str()))==false)
     {
      cout<<"Year: "; cin>>yearAsString;
+     if (isTheYearCorrect(atoi( yearAsString.c_str()))==false)
+     {
+         cout<<"Uncorrect year! Try again!";
+         Sleep (1500); system("cls");
+     }
     }
     while(isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
     {
      cout<<"Month: "; cin>>monthAsString;
+     if (isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
+     {
+        cout<<"Uncorrect month! Try again!";
+        Sleep (1500); system("cls");
+        cout<<"Year: "<<yearAsString<<endl;
+     }
     }
-
     do
     {
      cout<<"Day: "; cin>>dayAsString;
+     if (isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()))==false)
+     {
+         cout<<"Uncorrect day! Try again!"<<endl;
+         Sleep(1000); system("cls");
+         cout<<"Year: "<<yearAsString<<"  Month: "<<monthAsString<<endl;
+     }
     } while(isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()) )==false);
     cout<<"Introduced date!"<<endl;
+    Sleep(500);
     wholeDate+=yearAsString+"-"+monthAsString+"-"+dayAsString;
     return wholeDate;
 }
