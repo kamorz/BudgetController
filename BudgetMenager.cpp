@@ -2,13 +2,21 @@
 
 void BudgetMenager::displayAllMoneyMovements()
 {
+    system("cls");
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
-        cout << endl << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<
-        "  Item:  " << movements[searcher].getItem()<< " amount: "<<movements[searcher].getAmount()<<" date: "
-        <<movements[searcher].getDate()<<endl;
+        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+        cout<<"Date: "<<movements[searcher].getDate()<<endl;
+        cout<< "Amount: ";
+        if (movements[searcher].getItem()==0)
+        cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+        else if (movements[searcher].getItem()==1)
+        cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+
+        cout<<endl<<endl;
     }
-    cout<<endl<<endl;
+    cout<<endl;
+    system("pause");
 }
 
 int BudgetMenager::addIncome(int loggedUserID)
@@ -59,7 +67,7 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     movement.setName(AuxiliaryMethods::loadLine());
 
     double newAmount=0;
-    cout << "Insert amount using separatot '.' :  ";
+    cout << "Insert amount using separator '.' :  ";
     while (! (cin>>newAmount))
     {
     cout<<"Uncorrect value! Try again!"<<endl;

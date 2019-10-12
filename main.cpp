@@ -43,6 +43,9 @@ while (true)
             case '2':
                 budgetApp.addExpense();
                 break;
+            case '3':
+                budgetApp.displayAllMoneyMovements();
+                break;
             case '9':
                 budgetApp.userLogOut();
                 break;

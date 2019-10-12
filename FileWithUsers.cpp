@@ -30,7 +30,7 @@ vector <User> FileWithUsers::loadAllUsersFromFile()
     vector <User> users;
 
     CMarkup xml;
-    bool fileExist = xml.Load( "users.xml" );
+    bool fileExist = xml.Load( FILE_WITH_USERS_NAME );
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();

@@ -4,6 +4,7 @@
 #include <iostream>
 #include  <cstdlib>
 #include <stdio.h>
+#include <iomanip>
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
 #include "FileWithMovements.h"
@@ -20,7 +21,7 @@ public:
     BudgetMenager(string fileWithIncomesName, string fileWithExpensesName, int loggedUserID)
     : fileWithMovements(fileWithIncomesName, fileWithExpensesName), LOGGED_USER_ID(loggedUserID)
     {
-        //movements= plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        movements= fileWithMovements.loadLoggedUserMovements(LOGGED_USER_ID);
     };
     void displayAllMoneyMovements();
     int addIncome(int loggedUserID);

@@ -26,11 +26,11 @@ char BudgetApp::selectOptionFromUserMenu()
     char choice;
 
     system("cls");
-    displayAllMoneyMovements();
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
+    cout << "3. Display all your incomes and expenses" << endl;
     cout << "---------------------------" << endl;
     cout << "8. Change password" << endl;
     cout << "9. Log out" << endl;
