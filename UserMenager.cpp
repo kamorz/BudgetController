@@ -36,7 +36,8 @@ User UserMenager::insertNewUserDatas()
 
     user.setPassword(password);
     cout << "Enter your name: ";
-    cin>>name;
+    cin.sync();
+    getline(cin,name);
     user.setRealName(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(name));
     cout << "Enter your surname: ";
     cin>>surname;

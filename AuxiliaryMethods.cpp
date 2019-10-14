@@ -240,6 +240,11 @@ string AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(string text)
     {
         transform(text.begin(), text.end(), text.begin(), ::tolower);
         text[0] = toupper(text[0]);
+        for (int i=0; i<text.length();i++)
+        {
+            if (text[i]==' ')
+            text[i+1]= toupper(text[i+1]);
+        }
     }
     return text;
 }
