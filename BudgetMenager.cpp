@@ -120,6 +120,66 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 }
 
 
+void BudgetMenager::displayMoneyMovementsFromSelectedPeriod()
+{
+    system("cls");
+    HANDLE hOut;
+    hOut = GetStdHandle( STD_OUTPUT_HANDLE );
+
+    double balance=0;
+    string periodStart, periodEnd;
+    cout<< "Choose start of period"<<endl<<endl;
+    periodStart=AuxiliaryMethods::introducingDate();
+    cout<<endl<< "Choose end of period"<<endl<<endl;
+    periodEnd=AuxiliaryMethods::introducingDate();
+    system("cls");
+    cout<<"<<< PERIOD: "<<periodStart<<" - "<<periodEnd<<" >>>"<<endl<<endl;
+
+    for (int searcher = 0 ; searcher< movements.size(); searcher++)
+    {
+        if (isIntroducedDateInsidePeriod(periodStart, periodEnd, movements[searcher].getDate())==true)
+        {
+            if (movements[searcher].getItem()==0)
+                SetConsoleTextAttribute( hOut, FOREGROUND_RED );
+            else if (movements[searcher].getItem()==1)
+                SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
+            cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<< "Name:  " << movements[searcher].getName()<<endl;
+            cout<<"Date: "<<movements[searcher].getDate()<<endl;
+            cout<< "Amount: ";
+            if (movements[searcher].getItem()==0)
+            {
+                cout<<"-"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance-=movements[searcher].getAmount();
+            }
+
+            else if (movements[searcher].getItem()==1)
+            {
+                cout<<"+"<<fixed<<setprecision(2)<<movements[searcher].getAmount();
+                balance+=movements[searcher].getAmount();
+            }
+            cout<<endl<<endl;
+        }
+    }
+    SetConsoleTextAttribute( hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED );
+    cout<<"BALANCE: "<<fixed<<setprecision(2)<<balance<<endl<<endl;
+    system("pause");
+}
+
+
+
+bool BudgetMenager::isIntroducedDateInsidePeriod(string periodStart, string periodFinish, string date)
+{
+    periodStart=fileWithMovements.transformDateIntoOneNumber(periodStart);
+    periodFinish=fileWithMovements.transformDateIntoOneNumber(periodFinish);
+    date=fileWithMovements.transformDateIntoOneNumber(date);
+    if (date>=periodStart && date<=periodFinish)
+        return true;
+    else
+        return false;
+
+}
+
+
 int BudgetMenager::addIncome(int loggedUserID)
 {
     int typeOfMovement=1;

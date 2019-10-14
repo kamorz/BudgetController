@@ -32,6 +32,7 @@ char BudgetApp::selectOptionFromUserMenu()
     cout << "3. Display all your incomes and expenses" << endl;
     cout << "4. Display your incomes and expenses from current month" << endl;
     cout << "5. Display your incomes and expenses from previous month" << endl;
+    cout << "6. Display your incomes and expenses from selected period" << endl;
     cout << "---------------------------" << endl;
     cout << "8. Change password" << endl;
     cout << "9. Log out" << endl;
@@ -91,6 +92,11 @@ void BudgetApp::displayMoneyMovementsFromCurrentMonth()
 void BudgetApp::displayMoneyMovementsFromPreviousMonth()
 {
     budgetMenager->displayMoneyMovementsFromPreviousMonth();
+}
+
+void BudgetApp::displayMoneyMovementsFromSelectedPeriod()
+{
+    budgetMenager->displayMoneyMovementsFromSelectedPeriod();
 }
 
 void BudgetApp::addIncome()

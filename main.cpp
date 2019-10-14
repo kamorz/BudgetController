@@ -52,6 +52,9 @@ int main()
             case '5':
                 budgetApp.displayMoneyMovementsFromPreviousMonth();
                 break;
+            case '6':
+                budgetApp.displayMoneyMovementsFromSelectedPeriod();
+                break;
             case '9':
                 budgetApp.userLogOut();
                 break;
