@@ -11,6 +11,7 @@ void BudgetMenager::displayAllMoneyMovements()
             SetConsoleTextAttribute( hOut, FOREGROUND_RED );
         else if (movements[searcher].getItem()==1)
             SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
+
         cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
         cout<<"Date: "<<movements[searcher].getDate()<<endl;
         cout<< "Amount: ";
@@ -67,6 +68,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
         }
     }
     SetConsoleTextAttribute( hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED );
+
     cout<<"BALANCE : "<<fixed<<setprecision(2)<<balance<<endl;
     cout<<endl;
     system("pause");
@@ -131,6 +133,7 @@ int BudgetMenager::addIncome(int loggedUserID)
     cout<<"Added income!";
     Sleep(1200);
     fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
+    movements=fileWithMovements.sortMovementsAccordingToDate(movements);
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
@@ -146,6 +149,7 @@ int BudgetMenager::addExpense(int loggedUserID)
     cout<<"Added expense!";
     Sleep(1200);
     fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
+    movements=fileWithMovements.sortMovementsAccordingToDate(movements);
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)
@@ -189,3 +193,4 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     }
     return movement;
 }
+

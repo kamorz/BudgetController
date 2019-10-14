@@ -89,14 +89,14 @@ string AuxiliaryMethods::organizeWholeDate(string yearAsString, string dayAsStri
     string wholeDate="";
     wholeDate+=yearAsString+"-";
 
-    if (AuxiliaryMethods::convertStringToInt(monthAsString)>=10)
+    if (monthAsString.length()==2)
     wholeDate+= monthAsString+"-";
-    else if (AuxiliaryMethods::convertStringToInt(monthAsString)<10)
+    else if (monthAsString.length()<2)
     wholeDate+="0" + monthAsString+"-";
 
-    if (AuxiliaryMethods::convertStringToInt(dayAsString)>=10)
+    if (dayAsString.length()==2)
     wholeDate+= dayAsString;
-    else if (AuxiliaryMethods::convertStringToInt(dayAsString)<10)
+    else if (dayAsString.length()<2)
     wholeDate+="0" + dayAsString;
     return wholeDate;
 }

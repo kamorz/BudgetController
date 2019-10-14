@@ -84,9 +84,60 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
                 movement.setItem(0);
 
             if (loggedUserID==movement.getUserID())
-            movements.push_back(movement);
+                movements.push_back(movement);
         }
     }
+    movements=sortMovementsAccordingToDate(movements);
     return movements;
+}
+
+vector <Movement> FileWithMovements::sortMovementsAccordingToDate(vector<Movement>movements)
+{
+    int datesAsOneNumber[movements.size()];
+    for (int searcher = 0 ; searcher< movements.size(); searcher++)
+    {
+        datesAsOneNumber[searcher]=transformDateIntoOneNumber(movements[searcher].getDate());
+    }
+
+    //SELECTION SORT
+    int k;
+    for( int i = 0; i < movements.size(); i++ )
+    {
+        k = i;
+        for( int j = i + 1; j < movements.size(); j++ )
+        if( datesAsOneNumber[ j ] < datesAsOneNumber[ k ] )
+             k = j;
+
+        swap( datesAsOneNumber[ k ], datesAsOneNumber[ i ] );
+        swap( movements[ k ], movements[ i ] );
+    }
+
+
+    /*for (int searcher = 0 ; searcher< movements.size(); searcher++)
+    {
+        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
+        cout<<"Date: "<<movements[searcher].getDate()<<endl;
+        cout<< "Amount: ";
+        system("pause");
+    } */
+    return movements;
+}
+
+
+int FileWithMovements::transformDateIntoOneNumber(string dateInNormalFormat)
+{
+    string dateWithoutDashes="";
+    dateWithoutDashes+=dateInNormalFormat[0];
+    dateWithoutDashes+=dateInNormalFormat[1];
+    dateWithoutDashes+=dateInNormalFormat[2];
+    dateWithoutDashes+=dateInNormalFormat[3];
+    dateWithoutDashes+=dateInNormalFormat[5];
+    dateWithoutDashes+=dateInNormalFormat[6];
+    dateWithoutDashes+=dateInNormalFormat[8];
+    dateWithoutDashes+=dateInNormalFormat[9];
+
+    int dateAsNumber;
+    dateAsNumber = AuxiliaryMethods::convertStringToInt(dateWithoutDashes);
+    return dateAsNumber;
 }
 
