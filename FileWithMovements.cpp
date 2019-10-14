@@ -30,6 +30,8 @@ void FileWithMovements::addMovementToFile(Movement movement)
 
     xml.FindElem();
     xml.IntoElem();
+    xml.AddElem("movement");
+    xml.IntoElem();
     xml.AddElem( "ID", movement.getID());
     xml.AddElem( "UserID", movement.getUserID());
     xml.AddElem( "Amount", AuxiliaryMethods::convertDoubleToString(movement.getAmount()));
@@ -59,8 +61,10 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
         xml.FindElem();
         xml.IntoElem();
 
-        while (xml.FindElem("ID"))
+        while (xml.FindElem("movement"))
         {
+            xml.IntoElem();
+            xml.FindChildElem();
             Movement movement;
             string IdAsString=xml.GetElemContent();
             movement.setID(AuxiliaryMethods::convertStringToInt(IdAsString));
@@ -77,7 +81,7 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
             movement.setName(xml.GetElemContent());
             xml.FindElem();
             movement.setDate(xml.GetElemContent());
-
+            xml.OutOfElem();
             if (fileNumber==1)
                 movement.setItem(1);
             else if (fileNumber==2)
@@ -112,14 +116,6 @@ vector <Movement> FileWithMovements::sortMovementsAccordingToDate(vector<Movemen
         swap( movements[ k ], movements[ i ] );
     }
 
-
-    /*for (int searcher = 0 ; searcher< movements.size(); searcher++)
-    {
-        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
-        cout<<"Date: "<<movements[searcher].getDate()<<endl;
-        cout<< "Amount: ";
-        system("pause");
-    } */
     return movements;
 }
 
@@ -135,7 +131,6 @@ int FileWithMovements::transformDateIntoOneNumber(string dateInNormalFormat)
     dateWithoutDashes+=dateInNormalFormat[6];
     dateWithoutDashes+=dateInNormalFormat[8];
     dateWithoutDashes+=dateInNormalFormat[9];
-
     int dateAsNumber;
     dateAsNumber = AuxiliaryMethods::convertStringToInt(dateWithoutDashes);
     return dateAsNumber;

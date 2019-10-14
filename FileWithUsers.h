@@ -17,6 +17,7 @@ public:
     FileWithUsers (string fileName) : FILE_WITH_USERS_NAME(fileName) {};
     void addUserToFile(User user);
     vector <User> loadAllUsersFromFile();
+    void updateFileAfterChangingPassword(string newPassword, int loggedUserID);
 
 };
 

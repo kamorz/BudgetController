@@ -8,6 +8,7 @@ int UserMenager::getLoggedUserID()
 
 void UserMenager::userRegistration()
 {
+    system("cls");
     User user = insertNewUserDatas();
     users.push_back(user);
 
@@ -24,21 +25,24 @@ User UserMenager::insertNewUserDatas()
     string userName;
     do
     {
-        cout << endl << "Insert login: ";
-        cin>>userName;
+        cout << endl << "Enter login: ";
+        cin.sync();
+        getline(cin,userName);
         user.setUserName(userName);
     }
     while (isUserNameExist(user.getUserName()) == true);
-    string password, name, surname;
-    cout << "Insert Password: ";
-    cin>>password;
+    string password=" ", name, surname;
+
+    password=AuxiliaryMethods::introducingPassword();
+
     user.setPassword(password);
-    cout << "Insert your name: ";
-    cin>>name;
-    user.setRealName(name);
-    cout << "Insert your surname: ";
+    cout << "Enter your name: ";
+    cin.sync();
+    getline(cin,name);
+    user.setRealName(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(name));
+    cout << "Enter your surname: ";
     cin>>surname;
-    user.setRealSurname(surname);
+    user.setRealSurname(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(surname));
 
     return user;
 }
@@ -87,6 +91,25 @@ void UserMenager::displayAllUsers()
     }
 }
 
+
+void UserMenager::changeUserPassword(int loggedUserID)
+{
+    cin.sync();
+    string newPassword = "";
+    cout << "Enter new password: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (int searcher = 0; searcher< users.size(); searcher++)
+    {
+        if (users[searcher].getID() == loggedUserID)
+        {
+            users[searcher].setPassword(newPassword);
+            cout << "Password changed succesfully!" << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.updateFileAfterChangingPassword(newPassword, loggedUserID);
+}
 
 int UserMenager::userLogIn()
 {

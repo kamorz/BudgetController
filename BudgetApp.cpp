@@ -57,6 +57,12 @@ void BudgetApp::userRegistration()
     system("cls");
 }
 
+void BudgetApp::changeUserPassword()
+{
+    userMenager.changeUserPassword(userMenager.getLoggedUserID());
+    system("cls");
+}
+
 void BudgetApp::userLogIn()
 {
     userMenager.userLogIn();

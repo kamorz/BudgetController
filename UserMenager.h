@@ -32,6 +32,7 @@ public:
     int userLogIn();
     int userLogOut();
     bool isUserLoggedIn();
+    void changeUserPassword(int loggedUserID);
 
 
 };
