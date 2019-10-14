@@ -31,6 +31,7 @@ public:
     Movement addNewMovementDatas(int loggedUserID, int typeOfMovement /*, int idOstatniegoAdresata */ );
     void displayMoneyMovementsFromCurrentMonth();
     void displayMoneyMovementsFromPreviousMonth();
+
 };
 
 

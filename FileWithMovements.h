@@ -24,6 +24,8 @@ public:
     vector <Movement> loadLoggedUserMovements(int loggedUserID);
     int getLastMovementID();
     void setBiggestMovementID(int newBiggestMovementID);
+    vector <Movement> sortMovementsAccordingToDate(vector<Movement>movements);
+    int transformDateIntoOneNumber(string dateInNormalFormat);
 };
 
 
