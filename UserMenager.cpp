@@ -88,6 +88,25 @@ void UserMenager::displayAllUsers()
 }
 
 
+void UserMenager::changeUserPassword(int loggedUserID)
+{
+    cin.sync();
+    string newPassword = "";
+    cout << "Enter new password: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (int searcher = 0; searcher< users.size(); searcher++)
+    {
+        if (users[searcher].getID() == loggedUserID)
+        {
+            users[searcher].setPassword(newPassword);
+            cout << "Password changed succesfully!" << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.updateFileAfterChangingPassword(newPassword, loggedUserID);
+}
+
 int UserMenager::userLogIn()
 {
     cin.sync();

@@ -29,6 +29,7 @@ public:
     bool isUserLoggedIn();
     void userRegistration();
     void userLogIn();
+    void changeUserPassword();
     char selectOptionFromMainMenu();
     void displayAllUsers();
     void displayAllMoneyMovements();

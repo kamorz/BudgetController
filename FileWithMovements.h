@@ -13,6 +13,7 @@ class FileWithMovements
     const string FILE_WITH_INCOMES_NAME;
     int biggestMovementID;
 
+
 public:
     FileWithMovements (string fileWithIncomesName, string fileWithExpensesName)
     : FILE_WITH_INCOMES_NAME(fileWithIncomesName), FILE_WITH_EXPENSES_NAME(fileWithExpensesName)

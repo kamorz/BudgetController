@@ -112,14 +112,6 @@ vector <Movement> FileWithMovements::sortMovementsAccordingToDate(vector<Movemen
         swap( movements[ k ], movements[ i ] );
     }
 
-
-    /*for (int searcher = 0 ; searcher< movements.size(); searcher++)
-    {
-        cout << "Id: " << movements[searcher].getID()<< "  Name:  " << movements[searcher].getName()<<endl;
-        cout<<"Date: "<<movements[searcher].getDate()<<endl;
-        cout<< "Amount: ";
-        system("pause");
-    } */
     return movements;
 }
 
