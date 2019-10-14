@@ -35,10 +35,10 @@ User UserMenager::insertNewUserDatas()
     user.setPassword(password);
     cout << "Insert your name: ";
     cin>>name;
-    user.setRealName(name);
+    user.setRealName(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(name));
     cout << "Insert your surname: ";
     cin>>surname;
-    user.setRealSurname(surname);
+    user.setRealSurname(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(surname));
 
     return user;
 }

@@ -7,6 +7,7 @@
 #include <winbase.h>
 #include <cstdlib>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ public:
     static string getInfoAboutCurrentMonth();
     static string getInfoAboutPreviousMonth();
     static string organizeWholeDate(string yearAsString, string dayAsString, string MonthAsString);
+    static string transformFirstLetterToBigAndOthersToSmall(string text);
 
 };
 

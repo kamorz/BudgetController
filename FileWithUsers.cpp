@@ -72,8 +72,6 @@ void FileWithUsers::updateFileAfterChangingPassword(string newPassword, int logg
     {
     xml.IntoElem();
     xml.FindChildElem();
-    cout<<xml.GetElemContent()<<endl<<loggedUserID<<endl;
-    system("pause");
     if( xml.GetElemContent() == AuxiliaryMethods::convertIntToString(loggedUserID))
     {
      xml.FindElem();
