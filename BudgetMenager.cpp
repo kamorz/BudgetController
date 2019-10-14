@@ -169,10 +169,10 @@ void BudgetMenager::displayMoneyMovementsFromSelectedPeriod()
 
 bool BudgetMenager::isIntroducedDateInsidePeriod(string periodStart, string periodFinish, string date)
 {
-    periodStart=fileWithMovements.transformDateIntoOneNumber(periodStart);
-    periodFinish=fileWithMovements.transformDateIntoOneNumber(periodFinish);
-    date=fileWithMovements.transformDateIntoOneNumber(date);
-    if (date>=periodStart && date<=periodFinish)
+    int periodStartAsInteger=fileWithMovements.transformDateIntoOneNumber(periodStart);
+    int periodFinishAsInteger=fileWithMovements.transformDateIntoOneNumber(periodFinish);
+    int dateAsInteger=fileWithMovements.transformDateIntoOneNumber(date);
+    if (dateAsInteger>=periodStartAsInteger && dateAsInteger<=periodFinishAsInteger)
         return true;
     else
         return false;

@@ -26,7 +26,8 @@ User UserMenager::insertNewUserDatas()
     do
     {
         cout << endl << "Enter login: ";
-        cin>>userName;
+        cin.sync();
+        getline(cin,userName);
         user.setUserName(userName);
     }
     while (isUserNameExist(user.getUserName()) == true);
