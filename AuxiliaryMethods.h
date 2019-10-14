@@ -32,6 +32,7 @@ public:
     static string getInfoAboutPreviousMonth();
     static string organizeWholeDate(string yearAsString, string dayAsString, string MonthAsString);
     static string transformFirstLetterToBigAndOthersToSmall(string text);
+    static string introducingPassword();
 
 };
 

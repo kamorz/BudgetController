@@ -243,3 +243,25 @@ string AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(string text)
     }
     return text;
 }
+
+string AuxiliaryMethods::introducingPassword()
+{
+    string password="", confirmingPassword=" ";
+    while(password!=confirmingPassword)
+    {
+        cout<<"Enter password: ";
+        cin.sync();
+        getline(cin, password);
+        cout<<"Confirm password: ";
+        cin.sync();
+        getline(cin, confirmingPassword);
+
+        if (password!=confirmingPassword)
+        {
+            cout<<"Password aren't the same!"<<endl;
+            Sleep(1200);
+            system("cls");
+        }
+    }
+    return password;
+}

@@ -8,6 +8,7 @@ int UserMenager::getLoggedUserID()
 
 void UserMenager::userRegistration()
 {
+    system("cls");
     User user = insertNewUserDatas();
     users.push_back(user);
 
@@ -24,19 +25,20 @@ User UserMenager::insertNewUserDatas()
     string userName;
     do
     {
-        cout << endl << "Insert login: ";
+        cout << endl << "Enter login: ";
         cin>>userName;
         user.setUserName(userName);
     }
     while (isUserNameExist(user.getUserName()) == true);
-    string password, name, surname;
-    cout << "Insert Password: ";
-    cin>>password;
+    string password=" ", name, surname;
+
+    password=AuxiliaryMethods::introducingPassword();
+
     user.setPassword(password);
-    cout << "Insert your name: ";
+    cout << "Enter your name: ";
     cin>>name;
     user.setRealName(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(name));
-    cout << "Insert your surname: ";
+    cout << "Enter your surname: ";
     cin>>surname;
     user.setRealSurname(AuxiliaryMethods::transformFirstLetterToBigAndOthersToSmall(surname));
 
