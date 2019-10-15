@@ -103,7 +103,7 @@ string AuxiliaryMethods::organizeWholeDate(string yearAsString, string dayAsStri
 
 bool AuxiliaryMethods::isTheYearLeap(int year)
 {
-    if (year%4==0)
+    if ((year%4==0 && year%100!=0) || (year%400==0))
         return true;
     else
         return false;
@@ -112,7 +112,7 @@ bool AuxiliaryMethods::isTheYearLeap(int year)
 
 bool AuxiliaryMethods::isTheYearCorrect(int year)
 {
-    if (year>=2000 && year<=2099)
+    if (year>=1900 && year<=2099)
         return true;
     else
         return false;
