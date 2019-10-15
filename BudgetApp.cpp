@@ -6,7 +6,9 @@ char BudgetApp::selectOptionFromMainMenu()
     char choice;
 
     system("cls");
-    displayAllUsers();
+    //displayAllUsers();
+    cout<<"             <<<< YOUR BUDGET CONTROLLER >>>>";
+    cout<<endl<<endl<<"<< Plane your expenses and don't worry about empty wallet! >>";
     cout<<endl<<endl<<endl;
     cout << "    >>> MAIN MENU <<<" << endl;
     cout << "---------------------------" << endl;

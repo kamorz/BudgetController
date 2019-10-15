@@ -3,6 +3,7 @@
 void BudgetMenager::displayAllMoneyMovements()
 {
     system("cls");
+    cout<<"YOUR ALL OPERATIONS:"<<endl<<endl;
     HANDLE hOut;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
     {
@@ -12,7 +13,7 @@ void BudgetMenager::displayAllMoneyMovements()
         else if (movements[searcher].getItem()==1)
             SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
 
-        cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<<"Name:  " << movements[searcher].getName()<<endl;
+        cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<<"Name: " << movements[searcher].getName()<<endl;
         cout<<"Date: "<<movements[searcher].getDate()<<endl;
         cout<< "Amount: ";
         if (movements[searcher].getItem()==0)
@@ -32,6 +33,7 @@ void BudgetMenager::displayAllMoneyMovements()
 void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 {
     system("cls");
+    cout<<"YOUR OPERATIONS FROM CURRENT MONTH:"<<endl<<endl;
     HANDLE hOut;
     double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
@@ -50,7 +52,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
                 SetConsoleTextAttribute( hOut, FOREGROUND_RED );
             else if (movements[searcher].getItem()==1)
                 SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
-            cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<< "Name:  " << movements[searcher].getName()<<endl;
+            cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<< "Name: " << movements[searcher].getName()<<endl;
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
             if (movements[searcher].getItem()==0)
@@ -78,6 +80,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 {
     system("cls");
+    cout<<"YOUR OPERATIONS FROM CURRENT MONTH:"<<endl<<endl;
     HANDLE hOut;
     double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
@@ -96,7 +99,7 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
                 SetConsoleTextAttribute( hOut, FOREGROUND_RED );
             else if (movements[searcher].getItem()==1)
                 SetConsoleTextAttribute( hOut, FOREGROUND_GREEN );
-            cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<< "Name:  " << movements[searcher].getName()<<endl;
+            cout << "/Id:" << movements[searcher].getID()<<"/"<<endl<< "Name: " << movements[searcher].getName()<<endl;
             cout<<"Date: "<<movements[searcher].getDate()<<endl;
             cout<< "Amount: ";
             if (movements[searcher].getItem()==0)
