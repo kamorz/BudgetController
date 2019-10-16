@@ -280,3 +280,50 @@ string AuxiliaryMethods::introducingPassword()
     }
     return password;
 }
+
+double AuxiliaryMethods::introducingAmount()
+{
+    double amount;
+    string newAmountAsString="", correctAmountAsString="", partBeforeSeparator="", partAfterSeparator="";
+    int amountCorrection=0, separatorPlace=0;
+    do
+    {
+        cin>>newAmountAsString;
+        amountCorrection=1;
+
+        separatorPlace=newAmountAsString.length();
+        for (int position=0; position<newAmountAsString.length(); position++)
+        {
+            if (newAmountAsString[position]=='.' || newAmountAsString[position]==',')
+                separatorPlace= position;
+        }
+        for (int position=0; position<separatorPlace; position++)
+        {
+            if (newAmountAsString[position]>=48 && newAmountAsString[position]<=57)
+                partBeforeSeparator+=newAmountAsString[position];
+            else
+                amountCorrection=0;
+        }
+        for (int position=separatorPlace+1; position<newAmountAsString.length(); position++)
+        {
+            if (newAmountAsString[position]>=48 && newAmountAsString[position]<=57)
+                partAfterSeparator+=newAmountAsString[position];
+            else
+                amountCorrection=0;
+        }
+        if (amountCorrection==1)
+        {
+            correctAmountAsString+=partBeforeSeparator;
+            correctAmountAsString+=".";
+            correctAmountAsString+=partAfterSeparator;
+            amount=convertStringToDouble(correctAmountAsString);
+        }
+        else
+        {
+            newAmountAsString="", correctAmountAsString="", partBeforeSeparator="", partAfterSeparator="";
+            cout<<"Uncorrect value! Try again:"<<endl;
+        }
+    }
+    while (amountCorrection!=1);
+    return amount;
+}

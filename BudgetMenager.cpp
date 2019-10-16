@@ -231,15 +231,11 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
 
     double newAmount=0;
     cout << "Insert amount using separator '.' :  ";
-    while (! (cin>>newAmount))
-    {
-        cout<<"Uncorrect value! Try again!"<<endl;
-        cin.clear();
-        cin.sync();
-    }
+    newAmount=AuxiliaryMethods::introducingAmount();
     movement.setAmount(newAmount);
 
     char choice='0';
+    cin.sync();
     cout<<"Do you want to load current date (enter 'C')or insert your own(enter 'O')?";
     while (choice!='o' && choice!='O' && choice!='C' && choice!='c')
     {
