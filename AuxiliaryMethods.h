@@ -22,9 +22,9 @@ public:
     static string loadLine();
     static string introducingDate();
     static string loadSystemDate();
-    static bool isTheYearCorrect(int year);
-    static bool isTheMonthCorrect(int month);
-    static bool isTheDayCorrect(int year, int month, int day);
+    static bool isTheYearCorrect(string year);
+    static bool isTheMonthCorrect(string month);
+    static bool isTheDayCorrect(int year, int month, string day);
     static bool isTheYearLeap(int year);
     static string convertDoubleToString(double numberAsDouble);
     static double convertStringToDouble (string numberAsString);
@@ -33,6 +33,7 @@ public:
     static string organizeWholeDate(string yearAsString, string dayAsString, string MonthAsString);
     static string transformFirstLetterToBigAndOthersToSmall(string text);
     static string introducingPassword();
+    static double introducingAmount();
 
 };
 

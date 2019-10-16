@@ -49,19 +49,19 @@ string AuxiliaryMethods::introducingDate()
     string dayAsString="", monthAsString="", yearAsString="",  wholeDate;
     cout<<"Insert the data according to: YYYY-MM-DD"<<endl<<endl;
 
-    while(isTheYearCorrect(atoi( yearAsString.c_str()))==false)
+    while(isTheYearCorrect(yearAsString)==false)
     {
      cout<<"Year: "; cin>>yearAsString;
-     if (isTheYearCorrect(atoi( yearAsString.c_str()))==false)
+     if (isTheYearCorrect(yearAsString)==false)
      {
          cout<<"Uncorrect year! Try again!";
          Sleep (900); system("cls");
      }
     }
-    while(isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
+    while(isTheMonthCorrect( monthAsString)==false)
     {
      cout<<"Month: "; cin>>monthAsString;
-     if (isTheMonthCorrect(atoi( monthAsString.c_str()))==false)
+     if (isTheMonthCorrect(monthAsString)==false)
      {
         cout<<"Uncorrect month! Try again!";
         Sleep (900); system("cls");
@@ -71,13 +71,13 @@ string AuxiliaryMethods::introducingDate()
     do
     {
      cout<<"Day: "; cin>>dayAsString;
-     if (isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()))==false)
+     if (isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , dayAsString)==false)
      {
          cout<<"Uncorrect day! Try again!"<<endl;
          Sleep(900); system("cls");
          cout<<"Year: "<<yearAsString<<"  Month: "<<monthAsString<<endl;
      }
-    } while(isTheDayCorrect( atoi( yearAsString.c_str()) , atoi(monthAsString.c_str()) , atoi(dayAsString.c_str()) )==false);
+    } while(isTheDayCorrect( atoi(yearAsString.c_str()) , atoi(monthAsString.c_str()) , dayAsString)==false);
     cout<<"Introduced date!"<<endl;
     Sleep(500);
     wholeDate=organizeWholeDate(yearAsString, dayAsString, monthAsString);
@@ -110,45 +110,55 @@ bool AuxiliaryMethods::isTheYearLeap(int year)
 }
 
 
-bool AuxiliaryMethods::isTheYearCorrect(int year)
+bool AuxiliaryMethods::isTheYearCorrect(string year)
 {
-    if (year>=1900 && year<=2099)
+    if (convertStringToInt(year)>=1900 && convertStringToInt(year)<=2099 && year.length()==4)
         return true;
     else
         return false;
 }
 
 
-bool AuxiliaryMethods::isTheMonthCorrect(int month)
+bool AuxiliaryMethods::isTheMonthCorrect(string month)
 {
-    if (month>=1 && month<=12)
+    if (convertStringToInt(month)>=1 && convertStringToInt(month)<=12 && month.length()<=2 &&
+        month[month.length()-1]>=48 && month[month.length()-1]<=57 )
         return true;
     else
         return false;
+
 }
 
-bool AuxiliaryMethods::isTheDayCorrect(int year, int month, int day)
+bool AuxiliaryMethods::isTheDayCorrect(int year, int month, string day)
 {
+    if (day[day.length()-1]<48 || day[day.length()-1]>57)
+    {
+        return false;
+    }
+    else
+    {
     if (month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)
     {
-        if (day>=1 && day<=31)
+        if (convertStringToInt(day)>=1 && (convertStringToInt(day)<=31)&& day.length()<=2)
             return true;
             else
                 return false;
     }
     else if (month==4 || month==6 || month==9 || month==11)
     {
-        if (day>=1 && day<=30)
+        if (convertStringToInt(day)>=1 && (convertStringToInt(day)<=30) && day.length()<=2)
             return true;
             else
                 return false;
     }
     else if (month==2)
     {
-        if ( (isTheYearLeap(year) &&(day>=1 && day<=29)) || ((!isTheYearLeap(year)) && (day>=1 && day<=28)) )
+        if ( (isTheYearLeap(year) &&((convertStringToInt(day)>=1 && (convertStringToInt(day)<=29)))) && day.length()<=2 ||
+              ((!isTheYearLeap(year)) && ((convertStringToInt(day)>=1 && (convertStringToInt(day)<=28)))) && day.length()<=2)
             return true;
         else
             return false;
+    }
     }
 }
 
@@ -269,4 +279,51 @@ string AuxiliaryMethods::introducingPassword()
         }
     }
     return password;
+}
+
+double AuxiliaryMethods::introducingAmount()
+{
+    double amount;
+    string newAmountAsString="", correctAmountAsString="", partBeforeSeparator="", partAfterSeparator="";
+    int amountCorrection=0, separatorPlace=0;
+    do
+    {
+        cin>>newAmountAsString;
+        amountCorrection=1;
+
+        separatorPlace=newAmountAsString.length();
+        for (int position=0; position<newAmountAsString.length(); position++)
+        {
+            if (newAmountAsString[position]=='.' || newAmountAsString[position]==',')
+                separatorPlace= position;
+        }
+        for (int position=0; position<separatorPlace; position++)
+        {
+            if (newAmountAsString[position]>=48 && newAmountAsString[position]<=57)
+                partBeforeSeparator+=newAmountAsString[position];
+            else
+                amountCorrection=0;
+        }
+        for (int position=separatorPlace+1; position<newAmountAsString.length(); position++)
+        {
+            if (newAmountAsString[position]>=48 && newAmountAsString[position]<=57)
+                partAfterSeparator+=newAmountAsString[position];
+            else
+                amountCorrection=0;
+        }
+        if (amountCorrection==1)
+        {
+            correctAmountAsString+=partBeforeSeparator;
+            correctAmountAsString+=".";
+            correctAmountAsString+=partAfterSeparator;
+            amount=convertStringToDouble(correctAmountAsString);
+        }
+        else
+        {
+            newAmountAsString="", correctAmountAsString="", partBeforeSeparator="", partAfterSeparator="";
+            cout<<"Uncorrect value! Try again:"<<endl;
+        }
+    }
+    while (amountCorrection!=1);
+    return amount;
 }
