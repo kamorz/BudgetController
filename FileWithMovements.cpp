@@ -1,14 +1,24 @@
 #include "FileWithMovements.h"
 #include "Markup.h"
 
-int FileWithMovements::getLastMovementID()
+int FileWithMovements::getLastIncomeID()
 {
-    return biggestMovementID;
+    return biggestIncomeID;
 }
 
-void FileWithMovements::setBiggestMovementID(int newBiggestMovementID)
+void FileWithMovements::setBiggestIncomeID(int newBiggestIncomeID)
 {
-    biggestMovementID=newBiggestMovementID;
+    biggestIncomeID=newBiggestIncomeID;
+}
+
+int FileWithMovements::getLastExpenseID()
+{
+    return biggestExpenseID;
+}
+
+void FileWithMovements::setBiggestExpenseID(int newBiggestExpenseID)
+{
+    biggestExpenseID=newBiggestExpenseID;
 }
 
 void FileWithMovements::addMovementToFile(Movement movement)
@@ -68,20 +78,24 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
             Movement movement;
             string IdAsString=xml.GetElemContent();
             movement.setID(AuxiliaryMethods::convertStringToInt(IdAsString));
-            if (AuxiliaryMethods::convertStringToInt(IdAsString)>biggestMovementID)
-                biggestMovementID=AuxiliaryMethods::convertStringToInt(IdAsString);
-
-            xml.FindElem();
-            string userIdAsString=xml.GetElemContent();
+            if(fileNumber==1)
+            {
+                if (AuxiliaryMethods::convertStringToInt(IdAsString)>biggestIncomeID)
+                    biggestIncomeID=AuxiliaryMethods::convertStringToInt(IdAsString);
+            }
+            else if (fileNumber==2)
+            {
+                if (AuxiliaryMethods::convertStringToInt(IdAsString)>biggestExpenseID)
+                    biggestExpenseID=AuxiliaryMethods::convertStringToInt(IdAsString);
+            }
+            xml.FindElem();     string userIdAsString=xml.GetElemContent();
             movement.setUserID(AuxiliaryMethods::convertStringToInt(userIdAsString));
-            xml.FindElem();
-            string amountAsString=xml.GetElemContent();
+            xml.FindElem();     string amountAsString=xml.GetElemContent();
             movement.setAmount(AuxiliaryMethods::convertStringToDouble(amountAsString));
-            xml.FindElem();
-            movement.setName(xml.GetElemContent());
-            xml.FindElem();
-            movement.setDate(xml.GetElemContent());
+            xml.FindElem();     movement.setName(xml.GetElemContent());
+            xml.FindElem();     movement.setDate(xml.GetElemContent());
             xml.OutOfElem();
+
             if (fileNumber==1)
                 movement.setItem(1);
             else if (fileNumber==2)
@@ -94,6 +108,7 @@ vector <Movement> FileWithMovements::loadLoggedUserMovements(int loggedUserID)
     movements=sortMovementsAccordingToDate(movements);
     return movements;
 }
+
 
 vector <Movement> FileWithMovements::sortMovementsAccordingToDate(vector<Movement>movements)
 {

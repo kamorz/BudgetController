@@ -195,7 +195,7 @@ int BudgetMenager::addIncome(int loggedUserID)
     system("cls");
     cout<<"Added income!";
     Sleep(1200);
-    fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
+    fileWithMovements.setBiggestIncomeID(fileWithMovements.getLastIncomeID()+1);
     movements=fileWithMovements.sortMovementsAccordingToDate(movements);
 }
 
@@ -211,15 +211,18 @@ int BudgetMenager::addExpense(int loggedUserID)
     system("cls");
     cout<<"Added expense!";
     Sleep(1200);
-    fileWithMovements.setBiggestMovementID(fileWithMovements.getLastMovementID()+1);
+    fileWithMovements.setBiggestExpenseID(fileWithMovements.getLastExpenseID()+1);
     movements=fileWithMovements.sortMovementsAccordingToDate(movements);
 }
 
 Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement)
 {
     Movement movement;
+    if (typeOfMovement==0)
+    movement.setID(fileWithMovements.getLastExpenseID()+1);
+    else if (typeOfMovement==1)
+    movement.setID(fileWithMovements.getLastIncomeID()+1);
 
-    movement.setID(fileWithMovements.getLastMovementID()+1);
     movement.setUserID(loggedUserID);
 
     cin.sync();
