@@ -44,7 +44,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
         {
             dateFormatForComparison+=dateForComparison[datePosition];
         }
-        if (AuxiliaryMethods::getInfoAboutCurrentMonth()==dateFormatForComparison)
+        if (dateOperation.getInfoAboutCurrentMonth()==dateFormatForComparison)
         {
             HANDLE hOut;
             hOut = GetStdHandle( STD_OUTPUT_HANDLE );
@@ -91,7 +91,7 @@ void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
         {
             dateFormatForComparison+=dateForComparison[datePosition];
         }
-        if (AuxiliaryMethods::getInfoAboutPreviousMonth()==dateFormatForComparison)
+        if (dateOperation.getInfoAboutPreviousMonth()==dateFormatForComparison)
         {
             HANDLE hOut;
             hOut = GetStdHandle( STD_OUTPUT_HANDLE );
@@ -132,9 +132,9 @@ void BudgetMenager::displayMoneyMovementsFromSelectedPeriod()
     double balance=0;
     string periodStart, periodEnd;
     cout<< "Choose start of period"<<endl<<endl;
-    periodStart=AuxiliaryMethods::introducingDate();
+    periodStart=dateOperation.introducingDate();
     cout<<endl<< "Choose end of period"<<endl<<endl;
-    periodEnd=AuxiliaryMethods::introducingDate();
+    periodEnd=dateOperation.introducingDate();
     system("cls");
     cout<<"<<< PERIOD: "<<periodStart<<" - "<<periodEnd<<" >>>"<<endl<<endl;
 
@@ -196,7 +196,7 @@ int BudgetMenager::addIncome(int loggedUserID)
     cout<<"Added income!";
     Sleep(1200);
     fileWithMovements.setBiggestIncomeID(fileWithMovements.getLastIncomeID()+1);
-    movements=fileWithMovements.sortMovementsAccordingToDate(movements);
+    fileWithMovements.sortMovementsAccordingToDate(movements);
 }
 
 int BudgetMenager::addExpense(int loggedUserID)
@@ -245,12 +245,12 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
         cin>>choice;
         if (choice == 'C' || choice=='c')
         {
-            string newDate= AuxiliaryMethods::loadSystemDate();
+            string newDate= dateOperation.loadSystemDate();
             movement.setDate(newDate);
         }
         else if (choice == 'O' || choice=='o')
         {
-            movement.setDate(AuxiliaryMethods::introducingDate());
+            movement.setDate(dateOperation.introducingDate());
         }
     }
     return movement;
