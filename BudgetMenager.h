@@ -9,6 +9,7 @@
 
 #include "Movement.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperation.h"
 #include "FileWithMovements.h"
 
 using namespace std;
@@ -18,6 +19,7 @@ class BudgetMenager
     const int LOGGED_USER_ID;
     vector <Movement> movements;
     FileWithMovements fileWithMovements;
+    DateOperation dateOperation;
 
 public:
     BudgetMenager(string fileWithIncomesName, string fileWithExpensesName, int loggedUserID)
