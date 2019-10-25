@@ -80,7 +80,7 @@ void BudgetMenager::displayMoneyMovementsFromCurrentMonth()
 void BudgetMenager::displayMoneyMovementsFromPreviousMonth()
 {
     system("cls");
-    cout<<"YOUR OPERATIONS FROM CURRENT MONTH:"<<endl<<endl;
+    cout<<"YOUR OPERATIONS FROM PREVIOUS MONTH:"<<endl<<endl;
     HANDLE hOut;
     double balance=0;
     for (int searcher = 0 ; searcher< movements.size(); searcher++)
@@ -229,11 +229,11 @@ Movement BudgetMenager::addNewMovementDatas(int loggedUserID, int typeOfMovement
     movement.setItem(typeOfMovement);
 
     cin.sync();
-    cout << "Insert name: ";
+    cout << "Enter name: ";
     movement.setName(AuxiliaryMethods::loadLine());
 
     double newAmount=0;
-    cout << "Insert amount using separator '.' :  ";
+    cout << "Enter amount using separator '.' :  ";
     newAmount=AuxiliaryMethods::introducingAmount();
     movement.setAmount(newAmount);
 

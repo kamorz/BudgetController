@@ -117,7 +117,7 @@ int UserMenager::userLogIn()
     User user;
     string login = "", password = "";
 
-    cout << endl << "Insert login: ";
+    cout << endl << "Enter login: ";
     login = AuxiliaryMethods::loadLine();
 
     int searcher = 0; //users.begin();
@@ -127,7 +127,7 @@ int UserMenager::userLogIn()
         {
             for (int trialsNumber = 3; trialsNumber > 0; trialsNumber--)
             {
-                cout << "Insert password. Your trials: " << trialsNumber << ": ";
+                cout << "Enter password. Your trials: " << trialsNumber << ": ";
                 password = AuxiliaryMethods::loadLine();
 
                 if (users[searcher].getPassword() == password)
@@ -138,7 +138,7 @@ int UserMenager::userLogIn()
                     return loggedUserID;
                 }
             }
-            cout << "Inserted wrong password 3 times!" << endl;
+            cout << "Entered wrong password 3 times!" << endl;
             system("pause");
             return 0;
         }
